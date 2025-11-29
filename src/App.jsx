@@ -12,6 +12,7 @@ import Investor from './components/Investor';
 import Team from './components/Team';
 import Footer from './components/Footer';
 import LanguageToggle from './components/LanguageToggle';
+import Navbar from './components/Navbar';
 import { Moon, Sun } from 'lucide-react';
 
 function App() {
@@ -34,33 +35,32 @@ function App() {
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
-        <div className="fixed top-4 right-4 z-50 flex gap-2">
-          <LanguageToggle />
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:bg-white/20 transition-all"
-            aria-label="Toggle Dark Mode"
-          >
-            {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-slate-700" />}
-          </button>
-        </div>
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24">
-          <Hero />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24 pt-20">
+          <section id="home">
+            <Hero />
+          </section>
           <Problem />
           <Solution />
           <HowItWorks />
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <DemoWidget />
-            <div className="hidden md:block">
-              {/* Placeholder for demo context or image if needed, or just center the widget */}
+          <section id="demo">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <DemoWidget />
+              <div className="hidden md:block">
+                {/* Placeholder for demo context or image if needed, or just center the widget */}
+              </div>
             </div>
-          </div>
+          </section>
           <Features />
           <LocalProof />
-          <Waitlist />
+          <section id="about">
+            <Waitlist />
+          </section>
           <Investor />
-          <Team />
+          <section id="contact">
+            <Team />
+          </section>
         </main>
         <Footer />
       </div>

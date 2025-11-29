@@ -7,6 +7,12 @@ export const translations = {
             ctaSecondary: "View Pitch Deck (PDF)",
             tagline: "Simple tracking • AQI-aware nudges • Privacy-first",
         },
+        nav: {
+            home: "Home",
+            about: "About Us",
+            contact: "Contact Us",
+            demo: "Demo",
+        },
         problem: {
             headline: "Why current solutions fail",
             p1: "They track, not prevent — apps log data but don’t predict what goes wrong next.",
@@ -91,6 +97,12 @@ export const translations = {
             ctaPrimary: "दिल्ली बीटा में शामिल हों",
             ctaSecondary: "पिच डेक देखें (PDF)",
             tagline: "सरल ट्रैकिंग • AQI-जागरूक सुझाव • गोपनीयता-पहले",
+        },
+        nav: {
+            home: "होम",
+            about: "हमारे बारे में",
+            contact: "संपर्क करें",
+            demo: "डेमो",
         },
         problem: {
             headline: "मौजूदा समाधान क्यों विफल हैं",
