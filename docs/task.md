@@ -1,0 +1,11 @@
+- [x] Assets & Polish <!-- id: 26 -->
+    - [x] Create placeholder assets (PDF, GIF) <!-- id: 27 -->
+    - [x] Add seed data JSON <!-- id: 28 -->
+    - [x] Final Microcopy & SEO Tags <!-- id: 29 -->
+    - [x] README.md with instructions <!-- id: 30 -->
+        - [/] **Features Grid** (Cards with benefits) <!-- id: 15 -->
+        - [/] **Local Proof** (Delhi AQI chart mock) <!-- id: 16 -->
+        - [/] **Waitlist/Pricing** (Email form, referral code) <!-- id: 17 -->
+        - [/] **Investor Section** (Vision, KPIs, Deck link) <!-- id: 18 -->
+        - [/] **Team & Contact** <!-- id: 19 -->
+        - [/] **Footer** (Privacy, Legal, Hindi toggle) <!-- id: 20 -->
