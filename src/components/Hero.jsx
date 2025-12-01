@@ -49,14 +49,6 @@ const Hero = () => {
                         {t('hero.ctaPrimary')}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
-                    <a
-                        href="/pitch-deck.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95"
-                    >
-                        {t('hero.ctaSecondary')}
-                    </a>
                 </motion.div>
 
                 <motion.p
@@ -69,7 +61,7 @@ const Hero = () => {
                 </motion.p>
             </div>
 
-            {/* Demo GIF Placeholder */}
+            {/* Demo Video */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -78,7 +70,7 @@ const Hero = () => {
             >
                 <div className="absolute inset-0 flex items-center justify-center">
                     <video
-                        src="/demo-gif.mp4"
+                        src="/LifeLens_AI_Lifestyle_Coach.mp4"
                         autoPlay
                         loop
                         muted

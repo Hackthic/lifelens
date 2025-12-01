@@ -62,20 +62,47 @@ const HowItWorks = () => {
                     ))}
                 </div>
 
-                {/* Sample Rule */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-20 max-w-2xl mx-auto p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-4"
-                >
-                    <div className="p-3 rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400">
-                        <BrainCircuit className="w-6 h-6" />
-                    </div>
-                    <div className="font-mono text-sm text-slate-600 dark:text-slate-300">
-                        <span className="text-purple-600 dark:text-purple-400">If</span> PM2.5 &gt; 200 <span className="text-purple-600 dark:text-purple-400">&</span> user.plans_outdoor <span className="text-purple-600 dark:text-purple-400">→</span> recommend(mask)
-                    </div>
-                </motion.div>
+                {/* How AI Works - Grid Layout */}
+                <div className="mt-20 grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+                    {/* Left: Sample Rule */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-6"
+                    >
+                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                            AI-Powered Analysis
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400">
+                            Our intelligent system analyzes patterns across all your health metrics to predict potential risks before they become problems.
+                        </p>
+                        <div className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400">
+                                    <BrainCircuit className="w-6 h-6" />
+                                </div>
+                                <div className="font-mono text-sm text-slate-600 dark:text-slate-300">
+                                    <span className="text-purple-600 dark:text-purple-400">If</span> sleep &lt; 6h <span className="text-purple-600 dark:text-purple-400">&amp;</span> screen &gt; 8h <span className="text-purple-600 dark:text-purple-400">→</span> predict(eye_strain_risk)
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right: Disease Prediction Flow Image */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <img
+                            src="/disease_prediction_flow.png"
+                            alt="How LifeLens predicts diseases from comprehensive health data"
+                            className="w-full h-auto rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700"
+                        />
+                    </motion.div>
+                </div>
             </div>
         </section>
     );
