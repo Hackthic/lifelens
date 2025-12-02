@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import AuthModal from './AuthModal';
 
 const Hero = () => {
     const { t } = useLanguage();
+    const { isAuthenticated } = useAuth();
+    const navigate = useNavigate();
+    const [showAuthModal, setShowAuthModal] = useState(false);
+
+    const handleCtaClick = () => {
+        if (isAuthenticated) {
+            navigate('/demo');
+        } else {
+            setShowAuthModal(true);
+        }
+    };
 
     return (
         <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -45,8 +59,11 @@ const Hero = () => {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
-                    <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-teal-600/20 flex items-center justify-center gap-2 group">
-                        {t('hero.ctaPrimary')}
+                    <button
+                        onClick={handleCtaClick}
+                        className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-teal-600/20 flex items-center justify-center gap-2 group"
+                    >
+                        {isAuthenticated ? 'Go to Dashboard' : t('hero.ctaPrimary')}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
                 </motion.div>
@@ -80,6 +97,12 @@ const Hero = () => {
                     />
                 </div>
             </motion.div>
+
+            <AuthModal
+                isOpen={showAuthModal}
+                onClose={() => setShowAuthModal(false)}
+                initialMode="signup"
+            />
         </section>
     );
 };

@@ -1,46 +1,97 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { userAPI } from '../services/api';
 
 const STORAGE_KEY = 'lifelens_health_profile';
 
 /**
- * Custom hook for managing health profile in localStorage
- * @returns {object} Profile data and management functions
+ * Custom hook for managing health profile
+ * Syncs with backend if authenticated, otherwise uses localStorage
  */
 export const useHealthProfile = () => {
+    const { user, isAuthenticated, updateUser } = useAuth();
     const [profile, setProfile] = useState(null);
     const [hasCompletedAssessment, setHasCompletedAssessment] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // Load profile from localStorage on mount
+    // Load profile
     useEffect(() => {
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored) {
-                const data = JSON.parse(stored);
-                setProfile(data);
-                setHasCompletedAssessment(true);
+        const loadProfile = async () => {
+            setLoading(true);
+            try {
+                if (isAuthenticated && user) {
+                    // Map backend user data to frontend profile structure
+                    const backendProfile = {
+                        age: user.age,
+                        gender: user.gender,
+                        height: user.healthProfile?.height,
+                        weight: user.healthProfile?.weight,
+                        occupation: user.lifestyle?.occupation || 'student', // Default fallback
+                        physicalActivity: user.lifestyle?.activityLevel || 'moderate',
+                        diet: user.lifestyle?.dietaryPreference || 'mixed',
+                        lastUpdated: user.updatedAt
+                    };
+
+                    // Only set if we have the core data
+                    if (user.age && user.healthProfile?.weight) {
+                        setProfile(backendProfile);
+                        setHasCompletedAssessment(true);
+                    }
+                } else {
+                    // Fallback to localStorage
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        const data = JSON.parse(stored);
+                        setProfile(data);
+                        setHasCompletedAssessment(true);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading health profile:', error);
+            } finally {
+                setLoading(false);
             }
-        } catch (error) {
-            console.error('Error loading health profile:', error);
-        } finally {
-            setLoading(false);
-        }
-    }, []);
+        };
+
+        loadProfile();
+    }, [isAuthenticated, user]);
 
     /**
-     * Save profile to localStorage
-     * @param {object} profileData - Health profile data
+     * Save profile
      */
-    const saveProfile = (profileData) => {
+    const saveProfile = async (profileData) => {
         try {
-            const dataToSave = {
-                ...profileData,
-                lastUpdated: new Date().toISOString(),
-                version: '1.0'
-            };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-            setProfile(dataToSave);
-            setHasCompletedAssessment(true);
+            if (isAuthenticated) {
+                // Map frontend profile to backend structure
+                const apiData = {
+                    age: parseInt(profileData.age),
+                    gender: profileData.gender,
+                    healthProfile: {
+                        height: parseFloat(profileData.height),
+                        weight: parseFloat(profileData.weight)
+                    },
+                    lifestyle: {
+                        activityLevel: profileData.physicalActivity,
+                        dietaryPreference: profileData.diet,
+                        occupation: profileData.occupation
+                    }
+                };
+
+                const response = await userAPI.updateProfile(apiData);
+                updateUser(response.data.user); // Update global auth state
+                setProfile({ ...profileData, lastUpdated: new Date().toISOString() });
+                setHasCompletedAssessment(true);
+            } else {
+                // Save to localStorage
+                const dataToSave = {
+                    ...profileData,
+                    lastUpdated: new Date().toISOString(),
+                    version: '1.0'
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+                setProfile(dataToSave);
+                setHasCompletedAssessment(true);
+            }
             return true;
         } catch (error) {
             console.error('Error saving health profile:', error);
@@ -49,23 +100,16 @@ export const useHealthProfile = () => {
     };
 
     /**
-     * Update specific fields in profile
-     * @param {object} updates - Fields to update
+     * Update specific fields
      */
-    const updateProfile = (updates) => {
+    const updateProfile = async (updates) => {
         if (!profile) return false;
-
-        const updated = {
-            ...profile,
-            ...updates,
-            lastUpdated: new Date().toISOString()
-        };
-
+        const updated = { ...profile, ...updates };
         return saveProfile(updated);
     };
 
     /**
-     * Clear profile from localStorage
+     * Clear profile
      */
     const clearProfile = () => {
         try {
@@ -79,25 +123,12 @@ export const useHealthProfile = () => {
         }
     };
 
-    /**
-     * Check if assessment was completed recently (within 30 days)
-     */
-    const isAssessmentRecent = () => {
-        if (!profile || !profile.lastUpdated) return false;
-
-        const lastUpdate = new Date(profile.lastUpdated);
-        const daysSince = (new Date() - lastUpdate) / (1000 * 60 * 60 * 24);
-
-        return daysSince < 30;
-    };
-
     return {
         profile,
         hasCompletedAssessment,
         loading,
         saveProfile,
         updateProfile,
-        clearProfile,
-        isAssessmentRecent
+        clearProfile
     };
 };
