@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLens Mobile App Requirements</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #0f766e; border-bottom: 2px solid #0f766e; padding-bottom: 10px; }
+        h2 { color: #0f766e; margin-top: 30px; }
+        h3 { color: #334155; margin-top: 20px; }
+        code { background: #f1f5f9; padding: 2px 5px; rounded: 4px; font-family: monospace; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        .note { background: #f0fdfa; border-left: 4px solid #0f766e; padding: 15px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>LifeLens Mobile App - Product & Technical Requirements</h1>
+
+    <h2>1. Product Requirements Document (PRD)</h2>
+
+    <h3>1.1 Product Vision</h3>
+    <p>To become India's most accessible, AI-first lifestyle coach that empowers users to prevent chronic diseases through simple, daily tracking of holistic health metrics (Screen time, Sleep, Diet, Environment, Activity). "Prevention is better than cure."</p>
+
+    <h3>1.2 Target Audience</h3>
+    <ul>
+        <li><strong>Primary:</strong> Indian users aged 18-45 in Tier 1 & 2 cities.</li>
+        <li><strong>Language:</strong> Hindi & English speakers.</li>
+        <li><strong>Tech Literacy:</strong> Mixed. Ranging from tech-savvy professionals to users with basic smartphone knowledge.</li>
+        <li><strong>Key Characteristic:</strong> Concerned about health but overwhelmed by complex medical jargon or expensive tests.</li>
+    </ul>
+
+    <h3>1.3 MVP Goals</h3>
+    <ol>
+        <li><strong>Acquisition:</strong> Achieve 10,000 downloads in Delhi NCR region.</li>
+        <li><strong>Engagement:</strong> Daily Active Users (DAU) tracking at least 3 metrics.</li>
+        <li><strong>Retention:</strong> Users completing the "Health Assessment" and viewing their risk report.</li>
+    </ol>
+
+    <h3>1.4 Key Features (MVP)</h3>
+    <ol>
+        <li><strong>Bilingual Onboarding:</strong> Seamless language selection (Hindi/English) and phone number login (OTP).</li>
+        <li><strong>"Check Your LifeLens" Assessment:</strong> The core hook. A visual, chat-like wizard to assess initial health risks.</li>
+        <li><strong>Visual Dashboard:</strong> A card-based, icon-heavy home screen showing daily status of 7 key metrics.</li>
+        <li><strong>One-Tap Tracking:</strong> Simplified input methods (sliders, +/- buttons) for logging water, sleep, etc.</li>
+        <li><strong>Real-time Environment:</strong> Auto-fetch AQI and Weather based on location.</li>
+        <li><strong>AI Health Report:</strong> Simple, color-coded risk cards (Green/Orange/Red) with actionable "Desi Nudges" (e.g., "Drink water now," "Take a walk").</li>
+    </ol>
+
+    <hr>
+
+    <h2>2. Software Requirements Specification (SRS)</h2>
+
+    <h3>2.1 Functional Requirements</h3>
+
+    <h4>2.1.1 Authentication & Onboarding</h4>
+    <ul>
+        <li><strong>FR-01:</strong> System MUST allow users to sign up/login using Phone Number + OTP (Firebase Auth).</li>
+        <li><strong>FR-02:</strong> System MUST prompt for Language Selection (Hindi/English) immediately upon first launch.</li>
+        <li><strong>FR-03:</strong> System MUST store user profile locally (Name, Age, Gender, Location) and sync to backend when online.</li>
+    </ul>
+
+    <h4>2.1.2 Health Assessment (The Hook)</h4>
+    <ul>
+        <li><strong>FR-04:</strong> App MUST present a "Check Your LifeLens" wizard for first-time users.</li>
+        <li><strong>FR-05:</strong> Wizard MUST collect: BMI data (Height/Weight), Occupation, Activity Level, Diet Type.</li>
+        <li><strong>FR-06:</strong> System MUST calculate an initial "Risk Score" (0-100) locally on the device immediately after assessment.</li>
+    </ul>
+
+    <h4>2.1.3 Dashboard & Tracking</h4>
+    <ul>
+        <li><strong>FR-07:</strong> Dashboard MUST display 7 metric cards: Screen Time, Sleep, Water, Steps, Exercise, Diet, AQI.</li>
+        <li><strong>FR-08:</strong> Users MUST be able to update metrics with minimal typing (use sliders, steppers, or quick-select icons).</li>
+        <li><strong>FR-09:</strong> App MUST auto-fetch AQI using OpenWeatherMap API based on GPS permission.</li>
+        <li><strong>FR-10:</strong> App MUST support "Offline Mode" - allowing users to track data without internet, syncing when connection is restored.</li>
+    </ul>
+
+    <h4>2.1.4 AI Insights & Reports</h4>
+    <ul>
+        <li><strong>FR-11:</strong> System MUST generate a daily "Health Score" based on tracked metrics.</li>
+        <li><strong>FR-12:</strong> System MUST display "Nudges" (Notifications/In-app cards) triggered by logic (e.g., if Water < 2L -> "Hydrate now").</li>
+        <li><strong>FR-13:</strong> Reports MUST use traffic light colors (Green=Good, Yellow=Caution, Red=Danger) for universal understanding.</li>
+    </ul>
+
+    <h3>2.2 Non-Functional Requirements (NFR)</h3>
+    <ul>
+        <li><strong>NFR-01 (Usability):</strong> UI elements MUST be large and touch-friendly (min 44x44pt targets). Text MUST be concise. Icons MUST be used alongside text for all major actions (for low-literacy support).</li>
+        <li><strong>NFR-02 (Performance):</strong> App launch time MUST be under 2 seconds.</li>
+        <li><strong>NFR-03 (Localization):</strong> All static text MUST be stored in localization files (<code>en.json</code>, <code>hi.json</code>) for instant toggling.</li>
+        <li><strong>NFR-04 (Data Privacy):</strong> Health data MUST be stored encrypted in local storage (AsyncStorage/MMKV).</li>
+        <li><strong>NFR-05 (Connectivity):</strong> App MUST function 100% for tracking features even in "Airplane Mode".</li>
+    </ul>
+
+    <h3>2.3 Backend & API Requirements (High Level)</h3>
+    <ul>
+        <li><strong>Database:</strong> NoSQL (MongoDB/Firestore) for flexible user profile and daily logs.</li>
+        <li><strong>API Layer:</strong> REST or GraphQL endpoints for:
+            <ul>
+                <li><code>POST /user/profile</code> (Sync profile)</li>
+                <li><code>POST /user/metrics</code> (Sync daily logs)</li>
+                <li><code>GET /content/nudges</code> (Fetch dynamic health tips)</li>
+            </ul>
+        </li>
+        <li><strong>Auth:</strong> JWT based authentication linked to Phone Number.</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. User Stories (For Agile Development)</h2>
+
+    <h3>Epic 1: Onboarding & First Impressions</h3>
+    <ul>
+        <li><strong>US-1.1:</strong> As a <strong>Hindi-speaking user</strong>, I want to <strong>select my language on the first screen</strong>, so that I can understand the rest of the app setup.</li>
+        <li><strong>US-1.2:</strong> As a <strong>user</strong>, I want to <strong>login via OTP</strong>, so that I don't have to remember complex passwords.</li>
+        <li><strong>US-1.3:</strong> As a <strong>new user</strong>, I want to <strong>complete a quick health quiz</strong>, so that the app knows my baseline health risks immediately.</li>
+    </ul>
+
+    <h3>Epic 2: Daily Tracking (The Core Loop)</h3>
+    <ul>
+        <li><strong>US-2.1:</strong> As a <strong>busy professional</strong>, I want to <strong>log my water intake with one tap</strong>, so that I don't waste time typing.</li>
+        <li><strong>US-2.2:</strong> As a <strong>user in Delhi</strong>, I want to <strong>see the current AQI automatically</strong>, so I know if I should wear a mask.</li>
+        <li><strong>US-2.3:</strong> As a <strong>user</strong>, I want to <strong>see a red warning if my screen time is too high</strong>, so I am reminded to take a break.</li>
+    </ul>
+
+    <h3>Epic 3: Insights & Retention</h3>
+    <ul>
+        <li><strong>US-3.1:</strong> As a <strong>user</strong>, I want to <strong>see a simple "Health Score" (e.g., 85/100)</strong>, so I know how well I did today at a glance.</li>
+        <li><strong>US-3.2:</strong> As a <strong>user</strong>, I want to <strong>receive a notification to drink water</strong>, but only if I haven't logged enough water by 2 PM.</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. UI/UX Guidelines for "Education-Agnostic" Design</h2>
+    <ol>
+        <li><strong>Voice & Tone:</strong> Empathetic, encouraging, and simple. Avoid medical jargon (Use "Eye Strain" instead of "Computer Vision Syndrome").</li>
+        <li><strong>Visuals:</strong> Use illustrations for every category (e.g., a Glass icon for water, a Bed icon for sleep).</li>
+        <li><strong>Color Semantics:</strong> Strictly adhere to Green/Orange/Red for status. Do not use these colors for decoration to avoid confusion.</li>
+        <li><strong>Navigation:</strong> Bottom Tab Bar with max 4 tabs: <strong>Home</strong> (Tracker), <strong>Report</strong> (Analysis), <strong>Learn</strong> (Tips), <strong>Profile</strong>.</li>
+    </ol>
+</body>
+</html>
