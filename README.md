@@ -1,56 +1,164 @@
-# LifeLens - AI-First Lifestyle Coach
+# LifeLens - Comprehensive Health Tracking Platform
 
-LifeLens is a single-page React application designed to demonstrate the vision of an AI-powered preventive wellness platform. Built for a "Delhi-first" launch, it features localized content (English/Hindi), AQI-aware nudges, and an interactive risk calculator.
+A full-stack health tracking and disease prevention platform built with React (frontend) and Node.js/Express/MongoDB (backend).
 
-## Tech Stack
+## 🌟 Features
 
-- **Framework**: Vite + React 18
-- **Styling**: Tailwind CSS (v3.4+ with v4-like utility usage)
-- **Icons**: Lucide React
-- **Animations**: Framer Motion
-- **State Management**: React Context (for Language/Theme)
+- 📊 Comprehensive health tracking (nutrition, sleep, activity, screen time)
+- 🔐 Secure user authentication (JWT)
+- 🌍 Real-time Air Quality Index (AQI) monitoring
+- 📱 Mobile-first responsive design
+- 🌙 Dark mode support
+- 🌐 Multi-language support (English/Hindi)
+- 🎯 AI-powered health insights (coming soon)
 
-## Getting Started
+## 📁 Project Structure
 
-1.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+```
+lifelens/
+├── frontend/           # React + Vite frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── services/  # API integration
+│   │   └── ...
+│   └── package.json
+├── backend/            # Node.js + Express backend
+│   ├── config/        # Database connection
+│   ├── controllers/   # Business logic
+│   ├── models/        # MongoDB schemas
+│   ├── routes/        # API routes
+│   ├── middleware/    # Auth & validation
+│   └── package.json
+└── README.md
+```
 
-2.  **Run Development Server**:
-    ```bash
-    npm run dev
-    ```
+## 🚀 Quick Start
 
-3.  **Build for Production**:
-    ```bash
-    npm run build
-    ```
+### Prerequisites
 
-## Project Structure
+- Node.js (v16 or higher)
+- MongoDB (local or Atlas)
+- npm or yarn
 
-- `src/components/`: UI components for each section (Hero, Problem, DemoWidget, etc.)
-- `src/context/`: Context providers (LanguageContext)
-- `src/translations.js`: Localization strings
-- `public/`: Static assets (pitch-deck.pdf, demo-gif.mp4)
+### 1. Clone the Repository
 
-## Customization
+```bash
+git clone <your-repo-url>
+cd lifelens
+```
 
-- **Translations**: Edit `src/translations.js` to update text for English or Hindi.
-- **Theme**: Colors are defined in `tailwind.config.js` (primary teal: `#0ea5a4`).
-- **Demo Logic**: Risk calculation logic is in `src/components/DemoWidget.jsx`.
+### 2. Backend Setup
 
-## Deployment
+```bash
+cd backend
+npm install
 
-### Vercel
-1.  Import project from Git.
-2.  Framework Preset: Vite.
-3.  Deploy.
+# Create .env file
+cp .env.example .env
+# Edit .env and add your MongoDB URI and JWT secret
 
-### Netlify
-1.  New site from Git.
-2.  Build command: `npm run build`.
-3.  Publish directory: `dist`.
+# Start backend server
+npm run dev
+```
 
-## Note
-This is a demo application with mocked data for AQI and risk calculations. No real API keys are required.
+Backend will run on `http://localhost:5000`
+
+### 3. Frontend Setup
+
+```bash
+cd frontend
+npm install
+
+# Create .env file
+cp .env.example .env
+# Edit .env and add backend API URL
+
+# Start frontend dev server
+npm run dev
+```
+
+Frontend will run on `http://localhost:5173`
+
+## 🔧 Environment Variables
+
+### Backend (.env)
+```env
+PORT=5000
+NODE_ENV=development
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+JWT_EXPIRE=7d
+FRONTEND_URL=http://localhost:5173
+```
+
+### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:5000/api
+VITE_AQI_API_KEY=your_aqi_api_key
+```
+
+## 📡 API Endpoints
+
+### Authentication
+- `POST /api/auth/signup` - Register new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user
+
+### User Profile
+- `GET /api/users/profile` - Get user profile
+- `PUT /api/users/profile` - Update user profile
+
+### Daily Tracking
+- `POST /api/tracking/daily` - Submit daily health data
+- `GET /api/tracking/history` - Get tracking history
+- `GET /api/tracking/today` - Get today's tracking
+
+## 🛠️ Technologies
+
+### Frontend
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Router
+- Lucide Icons
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- bcryptjs
+- Helmet (Security)
+- CORS
+- express-validator
+
+## 📱 Mobile Support
+
+The application is designed with a mobile-first approach and fully supports:
+- Responsive layouts for all screen sizes
+- Touch-friendly interfaces
+- Optimized for both iOS and Android browsers
+
+## 🔐 Security
+
+- JWT token-based authentication
+- Password hashing with bcrypt
+- Rate limiting (100 requests/15 minutes)
+- Helmet security headers
+- Input validation and sanitization
+- CORS configuration
+
+## 📝 License
+
+ISC
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Support
+
+For support, email your-email@example.com or open an issue in the repository.
