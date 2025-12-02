@@ -123,7 +123,7 @@ const DemoWidget = () => {
                     <div className="flex items-center gap-3 mb-2">
                         <User className="w-6 h-6 text-teal-600 dark:text-teal-400" />
                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-                            Complete Your Profile
+                            Try Now For Result
                         </h3>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -427,15 +427,15 @@ const DemoWidget = () => {
                         >
                             {/* Overall Risk Score */}
                             <div className={`p-6 rounded-2xl ${result.riskLevel === 'low' ? 'bg-green-50 dark:bg-green-900/20' :
-                                    result.riskLevel === 'moderate' ? 'bg-yellow-50 dark:bg-yellow-900/20' :
-                                        result.riskLevel === 'high' ? 'bg-orange-50 dark:bg-orange-900/20' :
-                                            'bg-rose-50 dark:bg-rose-900/20'
+                                result.riskLevel === 'moderate' ? 'bg-yellow-50 dark:bg-yellow-900/20' :
+                                    result.riskLevel === 'high' ? 'bg-orange-50 dark:bg-orange-900/20' :
+                                        'bg-rose-50 dark:bg-rose-900/20'
                                 }`}>
                                 <div className="text-center">
                                     <div className={`text-5xl font-bold mb-2 ${result.riskLevel === 'low' ? 'text-green-600 dark:text-green-400' :
-                                            result.riskLevel === 'moderate' ? 'text-yellow-600 dark:text-yellow-400' :
-                                                result.riskLevel === 'high' ? 'text-orange-600 dark:text-orange-400' :
-                                                    'text-rose-600 dark:text-rose-400'
+                                        result.riskLevel === 'moderate' ? 'text-yellow-600 dark:text-yellow-400' :
+                                            result.riskLevel === 'high' ? 'text-orange-600 dark:text-orange-400' :
+                                                'text-rose-600 dark:text-rose-400'
                                         }`}>
                                         {result.overallRisk}
                                     </div>
