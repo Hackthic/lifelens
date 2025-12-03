@@ -164,6 +164,10 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                         }`}
                 >
                     <div className="px-4 pt-2 pb-4 space-y-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800">
+                        {/* AQI Indicator Mobile */}
+                        <div className="py-2 mb-2">
+                            <AQIIndicator {...useAQIContext()} compact showLocation />
+                        </div>
                         {isAuthenticated && (
                             <div className="flex items-center gap-3 px-4 py-3 mb-2 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                                 <div className="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center text-teal-600 dark:text-teal-400">
