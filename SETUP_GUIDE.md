@@ -90,7 +90,7 @@ npm install
 **Ensure `frontend/.env` has:**
 ```env
 VITE_API_URL=http://localhost:5000/api
-VITE_AQI_API_KEY=your_aqi_api_key_here
+VITE_OPENWEATHER_API_KEY=your_openweather_api_key_here
 ```
 
 **Start the frontend dev server:**

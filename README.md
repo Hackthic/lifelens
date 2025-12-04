@@ -96,7 +96,7 @@ FRONTEND_URL=http://localhost:5173
 ### Frontend (.env)
 ```env
 VITE_API_URL=http://localhost:5000/api
-VITE_AQI_API_KEY=your_aqi_api_key
+VITE_OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
 ## 📡 API Endpoints
