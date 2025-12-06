@@ -11,6 +11,8 @@ const { errorHandler } = require('./middleware/error.middleware');
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
 const trackingRoutes = require('./routes/tracking.routes');
+const profileRoutes = require('./routes/profile.routes');
+const analyticsRoutes = require('./routes/analytics.routes');
 
 // Initialize express app
 const app = express();
@@ -48,6 +50,8 @@ app.use('/api/', limiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/tracking', trackingRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

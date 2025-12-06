@@ -189,3 +189,176 @@ export const trackingAPI = {
         return data;
     },
 };
+
+// Profile API
+export const profileAPI = {
+    // Complete onboarding
+    completeOnboarding: async (profileData) => {
+        const response = await fetch(`${API_URL}/profile/onboarding`, {
+            method: 'POST',
+            headers: getHeaders(),
+            body: JSON.stringify(profileData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to complete onboarding');
+        }
+
+        return data;
+    },
+
+    // Get full profile
+    getProfile: async () => {
+        const response = await fetch(`${API_URL}/profile/me`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get profile');
+        }
+
+        return data;
+    },
+
+    // Update profile
+    updateProfile: async (profileData) => {
+        const response = await fetch(`${API_URL}/profile/update`, {
+            method: 'PUT',
+            headers: getHeaders(),
+            body: JSON.stringify(profileData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to update profile');
+        }
+
+        return data;
+    },
+
+    // Get profile completion
+    getCompletion: async () => {
+        const response = await fetch(`${API_URL}/profile/completion`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get completion status');
+        }
+
+        return data;
+    },
+
+    // Update goals
+    updateGoals: async (goals) => {
+        const response = await fetch(`${API_URL}/profile/goals`, {
+            method: 'PUT',
+            headers: getHeaders(),
+            body: JSON.stringify({ goals }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to update goals');
+        }
+
+        return data;
+    },
+};
+
+// Analytics API
+export const analyticsAPI = {
+    // Get daily analytics
+    getDaily: async (date) => {
+        const params = new URLSearchParams();
+        if (date) params.append('date', date);
+
+        const response = await fetch(`${API_URL}/analytics/daily?${params}`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get daily analytics');
+        }
+
+        return data;
+    },
+
+    // Get weekly trends
+    getWeekly: async () => {
+        const response = await fetch(`${API_URL}/analytics/weekly`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get weekly trends');
+        }
+
+        return data;
+    },
+
+    // Get monthly trends
+    getMonthly: async () => {
+        const response = await fetch(`${API_URL}/analytics/monthly`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get monthly trends');
+        }
+
+        return data;
+    },
+
+    // Get insights
+    getInsights: async () => {
+        const response = await fetch(`${API_URL}/analytics/insights`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get insights');
+        }
+
+        return data;
+    },
+
+    // Compare periods
+    comparePeriods: async (startDate1, endDate1, startDate2, endDate2) => {
+        const params = new URLSearchParams({
+            startDate1,
+            endDate1,
+            startDate2,
+            endDate2,
+        });
+
+        const response = await fetch(`${API_URL}/analytics/compare?${params}`, {
+            headers: getHeaders(),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to compare periods');
+        }
+
+        return data;
+    },
+};
+

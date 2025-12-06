@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, User, ArrowRight, Loader } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
@@ -15,6 +16,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { login, signup } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +30,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                 await signup(formData);
             }
             onClose();
+            navigate('/dashboard');
         } catch (err) {
             setError(err.message || 'Authentication failed');
         } finally {

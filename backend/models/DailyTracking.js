@@ -19,6 +19,14 @@ const dailyTrackingSchema = new mongoose.Schema({
             type: Number, // in ml
             min: 0
         },
+        glassesCount: {
+            type: Number, // easier for users
+            min: 0
+        },
+        caffeineIntake: {
+            type: Number, // cups of coffee/tea
+            min: 0
+        },
         meals: [{
             name: String,
             time: String,
@@ -28,6 +36,22 @@ const dailyTrackingSchema = new mongoose.Schema({
         totalCalories: {
             type: Number,
             min: 0
+        },
+        vegetableServings: {
+            type: Number,
+            min: 0
+        },
+        fruitServings: {
+            type: Number,
+            min: 0
+        },
+        proteinType: {
+            type: String,
+            enum: ['plant-based', 'animal-based', 'mixed', 'none']
+        },
+        junkFoodConsumed: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -83,6 +107,74 @@ const dailyTrackingSchema = new mongoose.Schema({
             max: 500
         },
         timeOutdoors: {
+            type: Number, // in minutes
+            min: 0
+        },
+        sunlightExposure: {
+            type: Number, // in minutes
+            min: 0
+        },
+        noiseLevel: {
+            type: String,
+            enum: ['quiet', 'moderate', 'loud']
+        },
+        indoorAirQuality: {
+            type: String,
+            enum: ['good', 'moderate', 'poor']
+        }
+    },
+
+    // Physical Wellness
+    wellness: {
+        bodyPain: {
+            present: {
+                type: Boolean,
+                default: false
+            },
+            location: [String], // e.g., ['back', 'neck', 'knee']
+            severity: {
+                type: Number,
+                min: 1,
+                max: 10
+            }
+        },
+        energyLevel: {
+            type: Number,
+            min: 1,
+            max: 10
+        },
+        meditationDuration: {
+            type: Number, // in minutes
+            min: 0
+        }
+    },
+
+    // Productivity & Focus
+    productivity: {
+        productiveHours: {
+            type: Number,
+            min: 0,
+            max: 24
+        },
+        focusQuality: {
+            type: Number,
+            min: 1,
+            max: 10
+        },
+        tasksCompleted: {
+            type: Number,
+            min: 0
+        }
+    },
+
+    // Social & Relationships
+    social: {
+        interactionQuality: {
+            type: Number,
+            min: 1,
+            max: 10
+        },
+        timeWithLovedOnes: {
             type: Number, // in minutes
             min: 0
         }

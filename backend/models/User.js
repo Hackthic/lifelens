@@ -94,6 +94,101 @@ const userSchema = new mongoose.Schema({
         }
     },
 
+    // Health Goals
+    goals: [{
+        type: String,
+        enum: ['weight-loss', 'weight-gain', 'muscle-building', 'better-sleep',
+            'stress-reduction', 'improved-fitness', 'better-nutrition', 'quit-smoking',
+            'reduce-screen-time', 'mental-wellness']
+    }],
+
+    // Baseline Health Metrics (targets)
+    baselines: {
+        dailyStepTarget: {
+            type: Number,
+            default: 10000
+        },
+        dailyWaterTarget: {
+            type: Number, // in ml
+            default: 2000
+        },
+        dailyCalorieTarget: {
+            type: Number,
+            default: 2000
+        },
+        restingHeartRate: Number, // bpm
+        baselineBloodPressure: {
+            systolic: Number,
+            diastolic: Number
+        },
+        targetWeight: Number // in kg
+    },
+
+    // Work & Lifestyle Information
+    workInfo: {
+        occupationType: {
+            type: String,
+            enum: ['desk-job', 'active-job', 'student', 'retired', 'homemaker', 'entrepreneur', 'other']
+        },
+        workHoursPerDay: Number,
+        commuteDuration: Number, // in minutes
+        sleepSchedule: {
+            type: String,
+            enum: ['early-bird', 'night-owl', 'irregular']
+        }
+    },
+
+    // User Preferences
+    preferences: {
+        language: {
+            type: String,
+            enum: ['en', 'hi'],
+            default: 'en'
+        },
+        timezone: {
+            type: String,
+            default: 'Asia/Kolkata'
+        },
+        reminderTimes: [{
+            type: String // Format: "HH:MM"
+        }],
+        notifications: {
+            email: {
+                type: Boolean,
+                default: true
+            },
+            push: {
+                type: Boolean,
+                default: true
+            },
+            dailyReminders: {
+                type: Boolean,
+                default: true
+            },
+            weeklyReport: {
+                type: Boolean,
+                default: true
+            }
+        },
+        theme: {
+            type: String,
+            enum: ['light', 'dark', 'auto'],
+            default: 'auto'
+        }
+    },
+
+    // Onboarding & Profile Status
+    onboardingCompleted: {
+        type: Boolean,
+        default: false
+    },
+    profileCompletionPercentage: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 100
+    },
+
     // Account Status
     isActive: {
         type: Boolean,
