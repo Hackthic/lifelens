@@ -2,19 +2,21 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 1.5rem;
+    background: #f8fafc;
 }
 
-/* Hero Header */
+/* Hero Header - Professional Blue Theme */
 .hero-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 20px;
-    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
     margin-bottom: 2rem;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero-content {
@@ -22,52 +24,57 @@
 }
 
 .greeting {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.25rem;
+    font-weight: 600;
     margin: 0 0 0.5rem 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    letter-spacing: -0.5px;
 }
 
 .current-date {
-    font-size: 1rem;
-    opacity: 0.95;
+    font-size: 0.95rem;
+    opacity: 0.8;
     margin: 0 0 0.5rem 0;
+    color: #cbd5e1;
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 1rem;
+    opacity: 0.75;
     margin: 0;
+    color: #cbd5e1;
 }
 
 .quick-entry-btn-hero {
-    padding: 1rem 2rem;
-    background: white;
-    color: #667eea;
+    padding: 0.875rem 1.75rem;
+    background: #3b82f6;
+    color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    border-radius: 10px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    gap: 0.625rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .quick-entry-btn-hero:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
 }
 
-/* Completion Card */
+/* Completion Card - Clean Design */
 .completion-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 1.75rem 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
 }
 
 .completion-header {
@@ -79,15 +86,15 @@
 
 .completion-header h3 {
     margin: 0 0 0.25rem 0;
-    font-size: 1.4rem;
-    color: #111827;
-    font-weight: 700;
+    font-size: 1.25rem;
+    color: #0f172a;
+    font-weight: 600;
 }
 
 .completion-header p {
     margin: 0;
-    color: #6b7280;
-    font-size: 0.95rem;
+    color: #64748b;
+    font-size: 0.875rem;
 }
 
 .completion-percentage {
@@ -96,81 +103,96 @@
 
 .percentage-value {
     display: block;
-    font-size: 2.25rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3b82f6;
 }
 
 .percentage-label {
-    font-size: 0.85rem;
-    color: #6b7280;
+    font-size: 0.8rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .completion-bar {
-    height: 12px;
-    background: #f3f4f6;
+    height: 10px;
+    background: #f1f5f9;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .completion-fill {
     height: 100%;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
     border-radius: 10px;
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Primary Stats Grid */
+/* Primary Stats Grid - Minimal Professional */
 .primary-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
     margin-bottom: 2rem;
 }
 
 .modern-stat-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 1.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
     position: relative;
-    overflow: hidden;
 }
 
 .modern-stat-card::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    transform: translate(30%, -30%);
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+}
+
+.steps-card::before {
+    background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.water-card::before {
+    background: linear-gradient(90deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.calories-card::before {
+    background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+}
+
+.sleep-card::before {
+    background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%);
 }
 
 .modern-stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e1;
 }
 
 .card-icon-wrapper {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
 }
 
 .card-icon {
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 .card-content {
@@ -180,41 +202,41 @@
 
 .card-label {
     margin: 0 0 0.5rem 0;
-    font-size: 0.95rem;
-    color: #6b7280;
+    font-size: 0.8rem;
+    color: #64748b;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 }
 
 .card-value {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: #111827;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
     margin-bottom: 0.25rem;
 }
 
 .card-value .unit {
-    font-size: 1.25rem;
-    color: #6b7280;
+    font-size: 1.1rem;
+    color: #64748b;
     font-weight: 500;
     margin-left: 0.25rem;
 }
 
 .card-target {
-    font-size: 0.9rem;
-    color: #9ca3af;
+    font-size: 0.85rem;
+    color: #94a3b8;
     margin: 0 0 1rem 0;
 }
 
-/* Circular Progress */
+/* Circular Progress - Professional Styling */
 .circular-progress {
     margin-top: 1rem;
 }
 
 .progress-ring {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -223,19 +245,20 @@
 }
 
 .progress-inner {
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1rem;
-    color: #111827;
+    font-size: 0.9rem;
+    color: #0f172a;
+    border: 2px solid #f8fafc;
 }
 
-/* Secondary Stats */
+/* Secondary Stats - Cleaner Cards */
 .secondary-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -246,70 +269,61 @@
 .secondary-card {
     background: white;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     display: flex;
     align-items: center;
-    gap: 1.25rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
+    gap: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
 }
 
 .secondary-card:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.mood-card:hover {
-    border-left-color: #f59e0b;
-}
-
-.stress-card:hover {
-    border-left-color: #8b5cf6;
-}
-
-.exercise-card:hover {
-    border-left-color: #10b981;
-}
-
-.sleep-quality-card:hover {
-    border-left-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e1;
 }
 
 .secondary-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.secondary-content {
+    flex: 1;
 }
 
 .secondary-content h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: 0.9rem;
-    color: #6b7280;
+    margin: 0 0 0.375rem 0;
+    font-size: 0.8rem;
+    color: #64748b;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .secondary-value {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #111827;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #0f172a;
     margin: 0;
 }
 
-/* Modern Insights Section */
+/* Modern Insights Section - Professional */
 .insights-section-modern {
     background: white;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
 }
 
 .insights-section-modern h2 {
     margin: 0 0 1.5rem 0;
-    font-size: 1.75rem;
-    color: #111827;
-    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0f172a;
+    font-weight: 600;
 }
 
 .insights-grid-modern {
@@ -320,29 +334,30 @@
 
 .insight-card-modern {
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 2px solid;
-    transition: all 0.3s ease;
+    border-radius: 10px;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    background: white;
 }
 
 .insight-card-modern:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .insight-good {
-    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-    border-color: #10b981;
+    background: #f0fdf4;
+    border-color: #86efac;
 }
 
 .insight-moderate {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    border-color: #3b82f6;
+    background: #eff6ff;
+    border-color: #93c5fd;
 }
 
 .insight-needs-improvement {
-    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-    border-color: #ef4444;
+    background: #fef2f2;
+    border-color: #fca5a5;
 }
 
 .insight-header {
@@ -353,28 +368,28 @@
 }
 
 .insight-badge {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.04);
     padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: capitalize;
-    color: #374151;
+    color: #475569;
 }
 
 .insight-status {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.875rem;
 }
 
 .status-good {
-    background: #10b981;
+    background: #22c55e;
     color: white;
 }
 
@@ -390,24 +405,24 @@
 
 .insight-message {
     margin: 0;
-    font-size: 1rem;
-    color: #374151;
+    font-size: 0.95rem;
+    color: #334155;
     line-height: 1.6;
 }
 
 .suggestions-card-modern {
     grid-column: span 2;
     padding: 1.75rem;
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-    border-radius: 12px;
-    border: 2px solid #f59e0b;
+    background: #fffbeb;
+    border-radius: 10px;
+    border: 1px solid #fde047;
 }
 
 .suggestions-card-modern h4 {
     margin: 0 0 1rem 0;
-    font-size: 1.25rem;
-    color: #111827;
-    font-weight: 700;
+    font-size: 1.125rem;
+    color: #0f172a;
+    font-weight: 600;
 }
 
 .suggestions-card-modern ul {
@@ -416,13 +431,13 @@
 }
 
 .suggestions-card-modern li {
-    margin-bottom: 0.75rem;
-    color: #374151;
+    margin-bottom: 0.625rem;
+    color: #334155;
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
-/* Quick Actions */
+/* Quick Actions - Professional Links */
 .quick-actions-modern {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -432,24 +447,24 @@
 .action-card {
     background: white;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.5rem 1.75rem;
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .action-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #3b82f6;
 }
 
 .action-icon {
-    font-size: 2.25rem;
+    font-size: 2rem;
 }
 
 .action-content {
@@ -459,25 +474,25 @@
 
 .action-content h4 {
     margin: 0 0 0.25rem 0;
-    font-size: 1.1rem;
-    color: #111827;
-    font-weight: 700;
+    font-size: 1rem;
+    color: #0f172a;
+    font-weight: 600;
 }
 
 .action-content p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: #64748b;
 }
 
 .action-arrow {
-    font-size: 1.5rem;
-    color: #667eea;
-    transition: transform 0.3s ease;
+    font-size: 1.25rem;
+    color: #3b82f6;
+    transition: transform 0.2s ease;
 }
 
 .action-card:hover .action-arrow {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
 /* Responsive Design */
@@ -488,6 +503,11 @@
 }
 
 @media (max-width: 768px) {
+    .overview-container {
+        padding: 1rem;
+        background: white;
+    }
+
     .hero-header {
         flex-direction: column;
         gap: 1.5rem;
@@ -496,7 +516,7 @@
     }
 
     .greeting {
-        font-size: 2rem;
+        font-size: 1.875rem;
     }
 
     .quick-entry-btn-hero {
@@ -511,7 +531,7 @@
     }
 
     .percentage-value {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .primary-stats-grid {
@@ -537,11 +557,11 @@
 
 @media (max-width: 480px) {
     .overview-container {
-        padding: 1rem;
+        padding: 0.75rem;
     }
 
     .greeting {
-        font-size: 1.75rem;
+        font-size: 1.625rem;
     }
 
     .completion-card {
