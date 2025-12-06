@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authAPI, profileAPI, trackingAPI, analyticsAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { ThemeProvider } from '../context/ThemeContext';
 import OnboardingWizard from '../components/Dashboard/OnboardingWizard';
 import DashboardNav from '../components/Dashboard/DashboardNav';
 import Overview from '../components/Dashboard/Overview';
 import DailyEntry from '../components/Dashboard/DailyEntry';
 import Analytics from '../components/Dashboard/Analytics';
 import Goals from '../components/Dashboard/Goals';
+import '../styles/theme.css';
 import './DashboardPage.css';
 
 const DashboardPage = () => {
@@ -104,42 +106,44 @@ const DashboardPage = () => {
     }
 
     return (
-        <div className="dashboard-container">
-            <DashboardNav
-                activeView={activeView}
-                onViewChange={setActiveView}
-                profileData={profileData}
-            />
+        <ThemeProvider>
+            <div className="dashboard-container">
+                <DashboardNav
+                    activeView={activeView}
+                    onViewChange={setActiveView}
+                    profileData={profileData}
+                />
 
-            <div className="dashboard-content">
-                {activeView === 'overview' && (
-                    <Overview
-                        profileData={profileData}
-                        todayTracking={todayTracking}
-                        onNavigate={setActiveView}
-                    />
-                )}
+                <div className="dashboard-content">
+                    {activeView === 'overview' && (
+                        <Overview
+                            profileData={profileData}
+                            todayTracking={todayTracking}
+                            onNavigate={setActiveView}
+                        />
+                    )}
 
-                {activeView === 'daily-entry' && (
-                    <DailyEntry
-                        existingData={todayTracking}
-                        onDataUpdate={handleDataUpdate}
-                        profileData={profileData}
-                    />
-                )}
+                    {activeView === 'daily-entry' && (
+                        <DailyEntry
+                            existingData={todayTracking}
+                            onDataUpdate={handleDataUpdate}
+                            profileData={profileData}
+                        />
+                    )}
 
-                {activeView === 'analytics' && (
-                    <Analytics profileData={profileData} />
-                )}
+                    {activeView === 'analytics' && (
+                        <Analytics profileData={profileData} />
+                    )}
 
-                {activeView === 'goals' && (
-                    <Goals
-                        profileData={profileData}
-                        onUpdate={loadDashboardData}
-                    />
-                )}
+                    {activeView === 'goals' && (
+                        <Goals
+                            profileData={profileData}
+                            onUpdate={loadDashboardData}
+                        />
+                    )}
+                </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 };
 

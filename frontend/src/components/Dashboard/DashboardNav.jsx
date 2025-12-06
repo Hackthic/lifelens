@@ -1,10 +1,12 @@
 import React from 'react';
 import { authAPI } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import './DashboardNav.css';
 
 const DashboardNav = ({ activeView, onViewChange, profileData }) => {
     const navigate = useNavigate();
+    const { theme, toggleTheme } = useTheme();
 
     const handleLogout = () => {
         authAPI.logout();
@@ -51,6 +53,10 @@ const DashboardNav = ({ activeView, onViewChange, profileData }) => {
             </ul>
 
             <div className="nav-footer">
+                <button className="theme-toggle-btn" onClick={toggleTheme} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
+                    {theme === 'light' ? '🌙' : '☀️'}
+                    <span>{theme === 'light' ? 'Dark' : 'Light'} Mode</span>
+                </button>
                 <button className="logout-btn" onClick={handleLogout}>
                     🚪 Logout
                 </button>
