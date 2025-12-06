@@ -188,10 +188,3 @@ function getNestedValue(obj, path) {
     return path.split('.').reduce((current, key) => current?.[key], obj);
 }
 
-module.exports = {
-    completeOnboarding,
-    getProfile,
-    updateProfile,
-    getProfileCompletion,
-    updateGoals
-};

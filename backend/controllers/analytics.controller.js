@@ -328,10 +328,3 @@ function getMostCommon(arr) {
     return Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b);
 }
 
-module.exports = {
-    getDailyAnalytics,
-    getWeeklyTrends,
-    getMonthlyTrends,
-    getInsights,
-    comparePeriods
-};
