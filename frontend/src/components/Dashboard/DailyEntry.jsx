@@ -71,7 +71,7 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                     <h2>💧 Nutrition & Hydration</h2>
                     <div className="form-grid">
                         <div className="form-group">
-                            <label>Water Intake (ml)</label>
+                            <label>Water Intake (ml) <span className="required">*</span></label>
                             <input
                                 type="number"
                                 name="nutrition.waterIntake"
@@ -113,7 +113,7 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                     <h2>🏃 Physical Activity</h2>
                     <div className="form-grid">
                         <div className="form-group">
-                            <label>Steps</label>
+                            <label>Steps <span className="required">*</span></label>
                             <input
                                 type="number"
                                 name="activity.steps"
@@ -143,7 +143,7 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                     <h2>😴 Sleep</h2>
                     <div className="form-grid">
                         <div className="form-group">
-                            <label>Sleep Duration (hours)</label>
+                            <label>Sleep Duration (hours) <span className="required">*</span></label>
                             <input
                                 type="number"
                                 name="sleep.duration"
@@ -156,7 +156,7 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Sleep Quality</label>
+                            <label>Sleep Quality <span className="required">*</span></label>
                             <select
                                 name="sleep.quality"
                                 value={formData.sleep.quality}
@@ -177,7 +177,7 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                     <h2>🧠 Mental Wellness</h2>
                     <div className="form-grid">
                         <div className="form-group">
-                            <label>Today's Mood</label>
+                            <label>Today's Mood <span className="required">*</span></label>
                             <select
                                 name="mental.mood"
                                 value={formData.mental.mood}

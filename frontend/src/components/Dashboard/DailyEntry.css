@@ -13,12 +13,14 @@
 .entry-header h1 {
     margin: 0 0 0.25rem 0;
     font-size: 1.75rem;
-    color: #1a1a1a;
+    color: #111827;
+    font-weight: 700;
 }
 
 .entry-header p {
     margin: 0;
-    color: #666;
+    color: #4b5563;
+    font-size: 1rem;
 }
 
 .daily-entry-form {
@@ -37,7 +39,28 @@
 .form-section h2 {
     margin: 0 0 1.5rem 0;
     font-size: 1.25rem;
-    color: #1a1a1a;
+    color: #111827;
+    font-weight: 600;
+}
+
+.daily-entry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.25rem;
+    color: #111827;
+    font-weight: 600;
 }
 
 .form-grid {
@@ -54,8 +77,14 @@
 .form-group label {
     font-size: 0.9rem;
     font-weight: 500;
-    color: #374151;
+    color: #1f2937;
     margin-bottom: 0.5rem;
+}
+
+.required {
+    color: #ef4444;
+    font-weight: 700;
+    margin-left: 2px;
 }
 
 .form-group input,
@@ -64,6 +93,8 @@
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 0.95rem;
+    color: #111827;
+    background: #ffffff;
     transition: all 0.2s ease;
 }
 
