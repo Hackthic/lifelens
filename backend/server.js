@@ -73,10 +73,17 @@ app.use((req, res) => {
 // Error handler (must be last)
 app.use(errorHandler);
 
+// Set default NODE_ENV if not provided
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 // Start server
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
-    console.log(`\n🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT}\n`);
+const HOST = '0.0.0.0'; // Required for Railway deployment
+
+const server = app.listen(PORT, HOST, () => {
+    console.log(`\n🚀 Server running in ${process.env.NODE_ENV} mode`);
+    console.log(`📡 Listening on ${HOST}:${PORT}`);
+    console.log(`🏥 Health check: http://${HOST}:${PORT}/api/health\n`);
 });
 
 // Handle unhandled promise rejections
