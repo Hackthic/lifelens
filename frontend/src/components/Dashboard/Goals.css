@@ -5,26 +5,26 @@
 }
 
 .goals-header {
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 14px;
     margin-bottom: 2rem;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px var(--card-shadow);
+    border: 1px solid var(--border-color);
 }
 
 .goals-header h1 {
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
-    color: #0f172a;
+    color: var(--text-primary);
     font-weight: 600;
     letter-spacing: -0.5px;
 }
 
 .goals-header p {
     margin: 0;
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 1rem;
 }
 
@@ -36,26 +36,26 @@
 }
 
 .goal-card {
-    background: white;
+    background: var(--card-bg);
     padding: 1.75rem;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px var(--card-shadow);
 }
 
 .goal-card:hover {
-    border-color: #3b82f6;
+    border-color: var(--accent-primary);
     transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 4px 12px var(--card-shadow-hover);
 }
 
 .goal-card.selected {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border-color: #3b82f6;
+    border-color: var(--accent-primary);
     color: white;
     box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
 }
@@ -69,7 +69,7 @@
     margin: 0 0 0.5rem 0;
     font-size: 1.125rem;
     font-weight: 600;
-    color: #0f172a;
+    color: var(--text-primary);
     letter-spacing: -0.25px;
 }
 
@@ -80,7 +80,7 @@
 .goal-card p {
     margin: 0;
     font-size: 0.875rem;
-    color: #64748b;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
@@ -96,7 +96,7 @@
     height: 26px;
     border-radius: 50%;
     background: white;
-    color: #3b82f6;
+    color: var(--accent-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,26 +106,26 @@
 }
 
 .goals-actions {
-    background: white;
+    background: var(--card-bg);
     padding: 1.75rem 2rem;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px var(--card-shadow);
+    border: 1px solid var(--border-color);
 }
 
 .goals-summary {
     font-size: 1rem;
-    color: #0f172a;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
 .save-btn {
     padding: 0.875rem 2rem;
-    background: #3b82f6;
+    background: var(--accent-primary);
     color: white;
     border: none;
     border-radius: 10px;
@@ -137,7 +137,7 @@
 }
 
 .save-btn:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
 }
@@ -163,10 +163,20 @@
     border-color: #86efac;
 }
 
+[data-theme="dark"] .message.success {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: #22c55e;
+}
+
 .message.error {
     background: #fef2f2;
     color: #dc2626;
     border-color: #fca5a5;
+}
+
+[data-theme="dark"] .message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
 }
 
 @media (max-width: 768px) {
