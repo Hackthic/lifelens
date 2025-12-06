@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { trackingAPI } from '../../services/api';
+import DietSection from './DietSection';
 import './DailyEntry.css';
 
 const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
@@ -23,8 +24,33 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
         },
         wellness: {
             energyLevel: existingData?.wellness?.energyLevel || 5,
+        },
+        diet: existingData?.diet || {
+            breakfast: [],
+            lunch: [],
+            snack: [],
+            dinner: []
         }
     });
+
+    // Auto-calculate total calories from diet
+    useEffect(() => {
+        const calculateDietCalories = () => {
+            const { breakfast, lunch, snack, dinner } = formData.diet;
+            const total = [...breakfast, ...lunch, ...snack, ...dinner]
+                .reduce((sum, food) => sum + (food.calories || 0), 0);
+
+            setFormData(prev => ({
+                ...prev,
+                nutrition: {
+                    ...prev.nutrition,
+                    totalCalories: total
+                }
+            }));
+        };
+
+        calculateDietCalories();
+    }, [formData.diet]);
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
@@ -39,6 +65,13 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                 ...prev[category],
                 [field]: value === '' ? '' : (isNaN(value) ? value : parseFloat(value))
             }
+        }));
+    };
+
+    const handleDietChange = (dietData) => {
+        setFormData(prev => ({
+            ...prev,
+            diet: dietData
         }));
     };
 
@@ -94,16 +127,17 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Total Calories</label>
+                            <label>Total Calories (Auto-calculated)</label>
                             <input
                                 type="number"
                                 name="nutrition.totalCalories"
                                 value={formData.nutrition.totalCalories}
-                                onChange={handleChange}
-                                placeholder="2000"
+                                readOnly
+                                placeholder="0"
                                 min="0"
+                                style={{ background: '#f9fafb', cursor: 'not-allowed' }}
                             />
-                            <span className="helper-text">Target: {profileData?.baselines?.dailyCalorieTarget || 2000}</span>
+                            <span className="helper-text">Automatically calculated from diet section below</span>
                         </div>
                     </div>
                 </div>
@@ -231,6 +265,14 @@ const DailyEntry = ({ existingData, onDataUpdate, profileData }) => {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                {/* Diet Section */}
+                <div className="form-section">
+                    <DietSection
+                        dietData={formData.diet}
+                        onDietChange={handleDietChange}
+                    />
                 </div>
 
                 {message && (
